@@ -337,6 +337,8 @@ const PLS: ByteHandler = Some(|lex| {
         b'+' => {
             lex.bump();
 
+            lex.asi = Asi::ImplicitSemicolon;
+
             OperatorIncrement
         },
 
@@ -355,6 +357,8 @@ const MIN: ByteHandler = Some(|lex| {
     lex.token = match lex.next_byte() {
         b'-' => {
             lex.bump();
+
+            lex.asi = Asi::ImplicitSemicolon;
 
             OperatorDecrement
         },

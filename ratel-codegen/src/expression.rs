@@ -505,4 +505,9 @@ mod test {
         assert_min("2 * (2 / 2);", "2*(2/2);");
         assert_min("(2 * 2) / 2;", "2*2/2;");
     }
+
+    #[test]
+    fn regression_increments() {
+        assert_min("x++ + ++y", "x+++(++y);");
+    }
 }
